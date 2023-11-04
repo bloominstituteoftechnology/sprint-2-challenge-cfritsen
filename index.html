@@ -110,7 +110,7 @@
     }
 
     // 👉 CHALLENGE 2
-    function mineSweeper() {
+    function mineSweeper(grid, x, y) {
       // 🧠 mineSweeper takes a grid as its first argument, and coordinates x and y as the second and third args
       //  The grid is an array of arrays in the following format: [["🟥","🟦","🟥"],["🟦","🟥","🟥"],["🟥","🟦","🟦"]]
       //  Each subarray is a row of the grid, the first subarray being the top row:
@@ -129,6 +129,32 @@
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
+
+      let row;
+      let result; 
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        result = "invalid coordinates";
+      } else {
+        for (i = 0; i < grid.length; i++) {
+          row = grid[i];
+          if (y === i + 1) {
+            for (i = 0; i < row.length; i++) {
+              if (x === i + 1) {
+                if (row[i] === "🟥") {
+                  result = "🟥 💀";
+                }
+                else {
+                  result = "🟦 🥳"
+                }
+              }
+            }
+          }
+
+        }
+      }
+      return result;
+      
+
     }
 
     // 👉 CHALLENGE 3
